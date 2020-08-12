@@ -1,0 +1,57 @@
+
+
+{% load static %}
+      <div class="row header"><!-- Begin Header -->
+
+        <!-- Logo
+        ================================================== -->
+        <div class="span2 logo">
+        	<a href="/"><img src="{{ setting.icon.url }}" alt="" /></a>
+
+        </div>
+
+        <!-- Main Navigation
+        ================================================== -->
+        <div class="span10 navigation">
+            <div class="navbar hidden-phone">
+
+            <ul class="nav">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/referans">Referanslarımız</a></li>
+                {% load mptt_tags %}
+                    {% recursetree menu %}
+                <li class="dropdown" >
+                    <a class="dropdown-toggle" {% if node.is_leaf_node %} href="/menu/{{ node.id }}"{% endif %}>{{ node.title }}{% if not node.is_leaf_node %} <b class="caret"></b>{% endif %}</a>
+
+                                    {% if not node.is_leaf_node %}
+
+                                        <ul class="dropdown-menu">
+                                            {{ children }}
+                                        </ul>
+                                    {% endif %}
+                </li>
+                {% endrecursetree %}
+
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Duyuru <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/duyuru">Duyurular</a></li>
+                        <li><a href="/etkinlik">Etkinlikler</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="/iletişim">İletişim</a></li>
+            </ul>
+
+            </div>
+
+
+
+        </div>
+
+
+      </div>
+

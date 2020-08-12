@@ -1,0 +1,66 @@
+{% load static %}
+<!-- Footer Area
+        ================================================== -->
+
+<div class="footer-container"><!-- Begin Footer -->
+    <div class="container">
+        <div class="row footer-row">
+            <div class="span8 footer-col">
+
+
+                <strong>Adresimiz</strong><br/>
+                {{ setting.address }}<br/> <br>
+                <strong>E-posta</strong><br/>
+                <a class="text-orange-hover" href="mailto:{{ setting.email }}">{{ setting.email }}</a>
+
+                <ul class="social-icons">
+                    <li><a onclick="myFunction()" class="social-icon facebook"></a>
+                        <script>
+                                function myFunction() {
+                                  window.open("https://{{ setting.facebook }}");
+                                }
+
+                        </script>
+                    </li>
+                    <li><a onclick="enes()" class="social-icon twitter"></a>
+                        <script>
+                                function enes() {
+                                  window.open("https://{{ setting.twitter }}");
+                                }
+
+                        </script>
+                    </li>
+
+                </ul>
+            </div>
+            <br><br>
+            <div class="span4 footer-col">
+
+                <img src="{{ setting.icon.url }}" alt="Piccolo"/><br/><br/>
+            </div>
+
+
+        </div>
+
+        <div class="row"><!-- Begin Sub Footer -->
+            <div class="span12 footer-col footer-sub">
+                <div class="row no-margin">
+                    <div class="span6"><span class="left">Copyright 2020 TUBENS Sitesi. Tüm hakları saklıdır.</span>
+                    </div>
+                    <div class="span6">
+                            <span class="right">
+                            <a href="/">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                    href="/referans">Referanslarımız</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                   <a
+                                           href="/iletişim">İletişim</a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Sub Footer -->
+
+    </div>
+</div><!-- End Footer -->
+
+<!-- Scroll to Top -->
+<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
