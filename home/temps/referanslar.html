@@ -1,0 +1,70 @@
+{% extends "homee.html" %}
+
+{% block title %} Referanslar {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block author %} ANAHTAR AR {% endblock %}
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Ana sayfa</a></li>
+            <li class="active"> / Referanslar</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row"><!--Container row-->
+
+    <!-- Page Sidebar
+    ================================================== -->
+    <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+
+          <h5 class="title-bg">SON PAYLAŞILAN DUYURULAR</h5>
+        <ul class="popular-posts">
+            {% for rs in content %}
+            <li>
+                <a href="/anons/{{ rs.id }}/{{ rs.slug }}"><img src="{{  rs.image.url }}"  style="height: 50px" alt="Popular Post"></a>
+                <h6><a href="/anons/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a><br>
+                <em>{{ rs.create_at }}</em></h6>
+            </li>
+            {% endfor %}
+
+        </ul>
+             <h5 class="title-bg">SON PAYLAŞILAN ETKİNLİKLER</h5>
+        <ul class="popular-posts">
+            {% for rs in etkinlik %}
+            <li>
+                <a href="/anons/{{ rs.id }}/{{ rs.slug }}"><img src="{{  rs.image.url }}"  style="height: 50px" alt="Popular Post"></a>
+                <h6><a href="/anons/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a><br>
+                <em>{{ rs.create_at }}</em></h6>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+
+    </div><!-- End sidebar column -->
+
+    <!-- Page Content
+    ================================================== -->
+    <div class="span8"><!--Begin page content column-->
+
+        <h2 class="title-bg">Referanslar</h2>
+
+        {{ setting.references|safe }}
+
+    </div> <!--End page content column-->
+
+</div><!-- End container row -->
+
+
+
+
+{% endblock %}
+

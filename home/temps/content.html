@@ -1,0 +1,168 @@
+{% load static %}
+<div class="row"><!--Container row-->
+
+    <!-- Page Left Sidebar
+    ================================================== -->
+    <div class="span3 sidebar page-left-sidebar"><!-- Begin sidebar column -->
+
+        <!--Navigation-->
+        <h5 class="title-bg">SİTEMİZ</h5>
+        <ul class="post-category-list">
+            <li><a href="/siteHak">Sitemiz Hakkında</a></li>
+            <li><a href="/referans">Referanslar</a></li>
+
+            <li><a href="/iletişim">Bize ulaşın</a></li>
+        </ul>
+        <br>
+        <br>
+        <br>
+
+        <!--Latest News-->
+        <h5 class="title-bg">SON PAYLAŞILAN DUYURULAR</h5>
+        <ul class="popular-posts">
+            {% for rs in content2 %}
+            <li>
+                <a href="/anons/{{ rs.id }}/{{ rs.slug }}"><img src="{{  rs.image.url }}"  style="height: 50px" alt="Popular Post"></a>
+                <h6><a href="/anons/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a><br>
+                <em>{{ rs.create_at }}</em></h6>
+
+            </li>
+            {% endfor %}
+
+        </ul>
+
+
+    </div><!-- End sidebar column -->
+
+    <!-- Page Content
+    ================================================== -->
+    <div class="span6"><!--Begin page content column-->
+        <div class="flexslider">
+            <ul class="slides">
+                {% for rs in sliderdata %}
+
+                    <li><a href="/anons/{{ rs.id }}/{{ rs.slug }}"><img src="{{  rs.image.url }}" style="height: 350px " alt="slider"/></a></li>
+
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h3>{{ setting.title }} <br/></h3>
+        <p class="lead">{{ setting.description }}</p>
+
+
+    </div> <!--End page content column-->
+
+    <!-- Page Right Sidebar
+   ================================================== -->
+    <div class="span3 sidebar page-right-sidebar"><!-- Begin sidebar column -->
+
+        <!--User Login-->
+        <h5 class="title-bg">KULLANICI GİRİŞİ</h5>
+
+
+        {% if user.id is not None %}
+        <div class="input-prepend">
+
+            <span class="add-on"><i class="icon-user"></i>{{ user.first_name }}</span>
+
+
+            <hr class="color-bar-2 color-bg">
+
+        </div>
+        <ul class="post-category-list">
+            <li><a href="/user"><i></i>Profilim</a></li>
+            <li><a href="/logout/"><i></i>Çıkış Yap</a></li>
+
+        </ul>
+        <hr class="color-bar-2 color-bg">
+
+        {% else %}
+             <div class="input-prepend">
+
+            <br><br>
+
+
+
+        </div>
+        <ul class="post-category-list">
+            <li><strong>İyi Günler Dileriz</strong></li>
+
+            <li><strong>Üye olanlar duyuru ve etkinlik paylaşabilirler.</strong></li>
+
+        </ul>
+        <hr class="color-bar-2 color-bg">
+
+        <a href="/login/">
+            <button class="btn btn-small btn-inverse" type="button">Giriş Yap</button>
+        </a>
+        <a href="/kayıtol/">
+            <button class="btn btn-small btn-inverse" type="button">Kayıt Ol</button>
+        </a>
+        {% endif %}
+        <h5 class="title-bg">SON PAYLAŞILAN ETKİNLİKLER</h5>
+        <ul class="popular-posts">
+            {% for rs in etkinlik2 %}
+            <li>
+                <a href="/anons/{{ rs.id }}/{{ rs.slug }}"><img src="{{  rs.image.url }}"  style="height: 50px" alt="Popular Post"></a>
+                <h6><a href="/anons/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a><br>
+                <em>{{ rs.create_at }}</em></h6>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+    </div><!-- End sidebar column -->
+
+</div><!-- End container row -->
+
+<!-- End Container -->
+
+
+<div class="row gallery-row"><!-- Begin Gallery Row -->
+
+    <div class="span12">
+        <h3 class="title-bg"> DUYURULARIMIZ </h3>
+
+
+        <!-- Gallery Thumbnails
+        ================================================== -->
+
+        <div class="row clearfix no-margin">
+            <ul class="gallery-post-grid holder">
+
+                {% for rs in content %}
+                <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{% static 'img/gallery/gallery-img-1-full.jpg'%}" title="Custom Illustration"
+                                   data-rel="prettyPhoto"></a>
+                                <a href="/anons/{{ rs.id }}/{{ rs.slug }}" class="item-details-link"></a>
+                            </span>
+                        </span>
+                    <a href="gallery-single.htm"><img src="{{  rs.image.url }}" style="height: 220px" alt="Gallery"></a>
+                    <span class="project-details"><a href="/anons/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a>{{ rs.description }}
+                        <a href="/anons/{{ rs.id }}/{{ rs.slug }}"><i class="icon-plus-sign"></i>Devamı..</a></span>
+
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div><!-- End Gallery Row -->
+<h3 class="title-bg"> ETKİNLİKLERİMİZ </h3>
+<div class="row">
+    {% for rs in etkinlik %}
+    <div class="span4">
+        <img src="{{ rs.image.url }}" style="height:300px" alt="">
+        <h5>{{ rs.title }}</h5>
+        <p>{{ rs.description }}</p>
+        <a href="/anons/{{ rs.id }}/{{ rs.slug }}"><i class="icon-plus-sign"></i>Devamı..</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+        
+

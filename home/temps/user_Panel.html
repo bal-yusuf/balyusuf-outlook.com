@@ -1,0 +1,35 @@
+{% load static %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="input-prepend">
+    <img src="{{ profile.image.url }}" style="height:150px" alt="Popular Post">
+    <span class="add-on"><i class="icon-user"></i>{{ user.first_name }}</span>
+
+
+</div>
+
+
+<hr class="color-bar-2 color-bg">
+
+<ul class="post-category-list">
+    <b>Ad:</b> {{ profile.user_name }}<br>
+
+    <b>Email:</b> {{ profile.user.email }}<br>
+    <b>TelNo:</b> {{ profile.phone }}<br>
+
+    <b>Adres:</b> {{ profile.adress }}<br>
+    <b>Şehir:</b> {{ profile.city }}<br>
+    <b>Ülke:</b> {{ profile.country }}
+</ul>
+<hr class="color-bar-2 color-bg">
+<a href="/logout/">
+    <button class="btn btn-small btn-inverse" type="button">Çıkış Yap</button>
+</a>
+
+

@@ -1,0 +1,44 @@
+{% extends "homee.html" %}
+
+{% block title %} Giriş Yap {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block author %} ANAHTAR AR {% endblock %}
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+{% block content %}
+{% load static %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<form id="contact-form" action="" method="post">
+    {% csrf_token %}
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-info-sign"></i></span>
+        <input name="username" class="span4" id="prependedInput" size="16" type="text"
+               placeholder="Username">
+    </div>
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-lock"></i></span>
+        <input  class="span4" placeholder="Şifre"
+                name="password" type="password" value="">
+    </div>
+
+
+    <div class="row">
+        <div class="span2">
+            <input type="submit" class="btn btn-inverse" value="Giriş Yap">
+        </div>
+    </div>
+
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "homee.html" %}
+
+{% block title %} Üye Profil  {% endblock %}
+
+{% block author %} ANAHTAR AR {% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Ana sayfa</a></li>
+            <li class="active"> / Kullanıcı</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- Contact Form -->
+    <div class="span8 contact">
+        <div class="section-title">
+            <h3 class="title-bg">üye paneli</h3>
+            {% include "user_Panel.html" %}
+
+        </div>
+
+    </div>
+    <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+        <h3 class="title-bg"></h3>
+        <ul class="post-category-list">
+            {% include "userProfileYan.html" %}
+            <a href="/user/update">
+                <button class="btn btn-small btn-inverse" type="button">Profil Güncelle</button>
+            </a>
+            <a href="/user/password">
+                <button class="btn btn-small btn-inverse" type="button">Şifre Değiştirme</button>
+            </a>
+        </ul>
+
+
+    </div><!-- End sidebar column -->
+
+
+</div><!-- End container row -->
+
+
+{% endblock %}
+

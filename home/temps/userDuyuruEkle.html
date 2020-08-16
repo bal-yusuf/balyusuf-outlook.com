@@ -1,0 +1,76 @@
+{% extends "homee.html" %}
+
+{% block title %} Duyuru Ekle  {% endblock %}
+
+{% block author %} ANAHTAR AR {% endblock %}
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' xmlns="http://www.w3.org/1999/html"/>
+
+{% load static %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jguery.min.js"></script>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Ana sayfa</a></li>
+            <li><a href="/user"> / Kullanıcı</a></li>
+            <li><a href="/user/contents"> / İçeriklerim</a></li>
+            <li class="active"> / Duyuru Veya Etkinlik Ekle</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- Contact Form -->
+    <div class="span8 contact">
+        <div class="section-title">
+            <h3 class="title-bg">Duyuru Veya Etkinlik Ekle</h3>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form.media }}
+                    {{ form.as_p }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit"> Ekle</button>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+    <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+        <h3 class="title-bg"></h3>
+        <ul class="post-category-list">
+            {% include "userProfileYan.html" %}
+            <a href="/user/update">
+                <button class="btn btn-small btn-inverse" type="button">Profil Güncelle</button>
+            </a>
+            <a href="/user/password">
+                <button class="btn btn-small btn-inverse" type="button">Şifre Değiştirme</button>
+            </a>
+        </ul>
+
+
+    </div>
+
+
+</div><!-- End container row -->
+
+
+{% endblock %}
+

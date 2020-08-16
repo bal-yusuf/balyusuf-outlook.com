@@ -1,0 +1,59 @@
+{% extends "homee.html" %}
+
+{% block title %} Üye Profil {% endblock %}
+
+{% block author %} ANAHTAR AR {% endblock %}
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Ana sayfa</a></li>
+            <li><a href="/user"> / Kullanıcı</a></li>
+
+            <li class="active"> / Profili Güncelle</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- Contact Form -->
+    <div class="span8 contact">
+        <div class="section-title">
+
+            <h3 class="title-bg">üye paneli</h3>
+            {% include "user_Panel.html" %}
+
+
+        </div>
+
+    </div>
+    <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+        <h3 class="title-bg"></h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit"> Güncelle</button>
+            </div>
+
+        </form>
+
+
+    </div><!-- End sidebar column -->
+
+
+</div><!-- End container row -->
+
+
+{% endblock %}
+

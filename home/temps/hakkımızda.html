@@ -1,0 +1,76 @@
+{% extends "homee.html" %}
+
+{% block title %} {{ content.title }} {% endblock %}
+{% block keywords %} {{ content.keywords }} {% endblock %}
+{% block description %} {{ content.description }} {% endblock %}
+{% block author %} ANAHTAR AR {% endblock %}
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Ana sayfa</a></li>
+            <li class="active"> / {{ content.title }}</li>
+        </ul>
+
+    </div>
+</div>
+<div class="row"><!--Container row-->
+
+    <div class="span12 blog">
+
+
+        <!-- Blog Post 1 -->
+        <article>
+
+            <div class="post-content">
+                <div class="row clearfix">
+                    <ul class="gallery-post-grid holder">
+                        <!-- Gallery Item 2 -->
+                        {% for rs in images %}
+                        <li class="span2 gallery-item" data-id="id-3" data-type="web">
+                        <span class="gallery-hover-6col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{{ rs.image.url }}" class="item-zoom-link lightbox"
+                                   title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a class="item-details-link"></a>
+                            </span>
+                        </span>
+                            <img src="{{ rs.image.url }}" style="height: 140px"
+                                                              alt="Gallery">
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
+                <div class="post-body">
+                    <blockquote>
+                        {{ content.detail | safe }}
+                    </blockquote>
+                </div>
+
+            </div>
+        </article>
+
+    </div><!--Close container row-->
+
+    <!-- Blog Sidebar
+    ================================================== -->
+    <div class="span4 sidebar">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+</div> <!-- End Container -->
+
+{% endblock %}
+
