@@ -1,6 +1,18 @@
 from django.contrib import admin
 
 # Register your models here.
-from home.models import Settings
+from home.models import Setting, ContactFormMessage, UserProfile
 
-admin.site.register(Settings)
+
+class ContactFormAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'subject', 'note', 'status']
+    list_filter = ['status']
+
+
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user_name', 'phone', 'adress', 'city', 'image_tag']
+
+
+admin.site.register(Setting)
+admin.site.register(ContactFormMessage,ContactFormAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)
